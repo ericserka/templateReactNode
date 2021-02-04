@@ -1,4 +1,4 @@
-* TEMPLATE REACT JS, NODE JS, SQLITE3, KNEX, AXIOS
+# TEMPLATE REACT JS, NODE JS, SQLITE3, KNEX, AXIOS
 
     * Lembrar de apagar o .git da pasta frontend pra não ter problema na hora de subir tudo pro github
 
