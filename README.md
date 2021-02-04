@@ -1,5 +1,5 @@
 # TEMPLATE REACT JS, NODE JS, SQLITE3, KNEX, AXIOS
-* Após clonar esse repositório, rode git remote set-url origin git@github.com:<username>/<repositoryname>.git no repositório do projeto ao invés do clássico remote add origin.
+* Após clonar esse repositório, rode git remote set-url origin git@github.com:username/repositoryname.git no repositório do projeto ao invés do clássico remote add origin.
 * Lembrar de apagar o .git da pasta frontend pra não ter problema na hora de subir tudo pro github.
 * Backend
    * npx knex migrate:make <nome da migration> cria uma migration.
