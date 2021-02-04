@@ -11,7 +11,7 @@
    * npx knex migrate:rollback desfaz a última migration executada (através do comando npx knex migrate:make <nome da migration>).
    * npx knex migrate:status lista as migrations executadas e fala se tem alguma pendente.
    * No index.js da pasta src do backend, quando for publicar o projeto, fazer:
-      * app.use(cors({origin: ‘https://enderecoondeositeestahospedado.com.br’}))
+      * app.use(cors({origin: 'https://enderecoondeositeestahospedado.com.br'}))
    * Essa URL definida no cors seria a URL que pode acessar a aplicação.
 * Frontend
    * nunca usar o mesmo nome para classes CSS em páginas ou components diferentes, vai dar merda.
