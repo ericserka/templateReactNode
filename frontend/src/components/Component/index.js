@@ -1,8 +1,7 @@
-import React from "react";
-import './styles.css'
+import React from 'react'
+import useStyles from './styles'
 
-export default function Component(props) {
-    return (
-        <h1 className="h1-component">{props.title}</h1>
-    )
+export default function Component({ title }) {
+  const classes = useStyles()
+  return <h1 className={classes.h1}>{title}</h1>
 }

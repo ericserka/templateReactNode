@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "format": "npx prettier --write .",
+    "dev": "nodemon -w src --exec \"babel-node src\"",
+    "build": "rimraf dist && babel src -s -D -d dist",
+    "start": "node dist"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +20,11 @@
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2"
   }
 }

@@ -1,6 +1,5 @@
-const express = require('express')
-
-const noticiaController = require('./controllers/noticiaController')
+import express from 'express'
+import noticiaController from './controllers/noticiaController'
 
 const routes = express.Router()
 
@@ -10,4 +9,4 @@ routes.post('/noticia', noticiaController.create);
 routes.post('/noticia/:id_noticia', noticiaController.update);
 routes.delete('/noticia/:id_noticia', noticiaController.delete);
 
-module.exports = routes;
+export default routes;

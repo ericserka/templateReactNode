@@ -1,6 +1,6 @@
-const connection = require('../database/connection');
+import connection from '../database/connection'
 
-module.exports = {
+export default {
     async index(request, response) {
         const { id } = request.params
 
