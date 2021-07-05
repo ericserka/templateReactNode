@@ -11,6 +11,7 @@
     - docker run -p 5432:5432 --name <NOME_DO_CONTAINER> --net pg -e POSTGRES_PASSWORD=<SUA_SENHA_DO_BANCO_DE_DADOS> -d postgres
     - docker exec -it <NOME_DO_CONTAINER> psql -U postgres
     - CREATE DATABASE <NOME_DO_BANCO_DE_DADOS>;
+  - Para fazer a configuração do knex usando postgres, foram usadas variáveis de ambiente. Copie o arquivo .env.example num arquivo .env e preencha os dados solicitados.
   - Babel é um transpilador (transpiler), que transforma código escrito em ES6 em algo que o Node.js consiga entender (CommonJS).
   - os comandos npx knex devem ser executados no diretório do knexfile.js
   - npx knex migrate:make <NOME_DA_MIGRATION> cria uma migration (entidade).
