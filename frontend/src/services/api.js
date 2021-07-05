@@ -1,6 +1,7 @@
 //api de comunicação do frontend com o backend
 import axios from 'axios'
+import { BACKEND_URL } from '../env'
 const api = axios.create({
-  baseURL: 'http://localhost:3333', //url do backend
+  baseURL: BACKEND_URL,
 })
 export default api
