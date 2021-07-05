@@ -1,28 +1,28 @@
 import connection from '../database/connection'
-import helloWorld from '../utils/someUtil'
-import noticiaService from '../services/noticia'
+import helloWorld from '../utils/someUtil2'
+import pessoaService from '../services/pessoa'
 
 export default {
   async index(request, response) {
     const { id } = request.params
 
     if (id) {
-      const noticia = await noticiaService.getUmaNoticia(id)
-      return response.json(noticia)
+      const pessoa = await pessoaService.getUmaPessoa(id)
+      return response.json(pessoa)
     } else {
-      const noticias = await noticiaService.getTodasNoticias()
+      const pessoas = await pessoaService.getTodasPessoas()
 
       console.log(helloWorld())
-      return response.json(noticias)
+      return response.json(pessoas)
     }
   },
 
   async create(request, response) {
-    const { link } = request.body
+    const { nome } = request.body
 
-    const [id] = await connection('noticia')
+    const [id] = await connection('pessoa')
       .insert({
-        link,
+        nome,
       })
       .returning('id')
 
@@ -31,9 +31,9 @@ export default {
 
   async update(request, response) {
     const { id } = request.params
-    const { link, updated_at } = request.body
+    const { nome, updated_at } = request.body
 
-    await connection('noticia').where({ id }).update({ link, updated_at })
+    await connection('pessoa').where({ id }).update({ nome, updated_at })
 
     return response.json({ id })
   },
@@ -41,7 +41,7 @@ export default {
   async delete(request, response) {
     const { id } = request.params
 
-    await connection('noticia').where('id', id).delete()
+    await connection('pessoa').where('id', id).delete()
 
     return response.status(204).send() //status code no content
   },
