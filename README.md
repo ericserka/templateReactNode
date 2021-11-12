@@ -17,50 +17,50 @@
 ### Ter o pgAdmin instalado (opcional)
   - O pgAdmin é um software gráfico para administração do SGBD PostgreSQL. SGBD é uma abreviação para Sistema de Gerenciamento de Banco de Dados, do inglês Data Base Management System - DBMS. A partir dele fica muito mais fácil criar servidores, banco de dados, tabelas, schemas, executar queries, etc.
   1. Atualizar o sistema
-    - ```sudo apt-get update```
+      - ```sudo apt-get update```
   2. Instalar pacotes necessários
-    - ```sudo apt-get install build-essential libssl-dev libffi-dev libgmp3-dev```
-    - ```sudo apt-get install python3-virtualenv libpq-dev python3-dev```
+      - ```sudo apt-get install build-essential libssl-dev libffi-dev libgmp3-dev```
+      - ```sudo apt-get install python3-virtualenv libpq-dev python3-dev```
   3. Criar um virtual environment num diretório desejado
-    - ```virtualenv pgAdmin4```
+      - ```virtualenv pgAdmin4```
   4. Ativar o virtual environment
-    - ```cd pgAdmin4```
-    - ```source bin/activate```
+      - ```cd pgAdmin4```
+      - ```source bin/activate```
   5. Baixar o pgAdmin4
-    - Pesquisar a versão mais recente no link: https://ftp.postgresql.org/pub/pgadmin/pgadmin4/
-    - ```wget https://ftp.postgresql.org/pub/pgadmin/pgadmin4/<versao_mais_recente>/pip/<versao_mais_recente>.whl```
+      - Pesquisar a versão mais recente no link: https://ftp.postgresql.org/pub/pgadmin/pgadmin4/
+      - ```wget https://ftp.postgresql.org/pub/pgadmin/pgadmin4/<versao_mais_recente>/pip/<versao_mais_recente>.whl```
   6. Instalar o pgAdmin4
-    - ```pip install <versao_mais_recente>.whl```
+      - ```pip install <versao_mais_recente>.whl```
   7. Configurar e executar o pgAdmin4
-    - Checar a versão mais recente do python entrando na pasta lib do diretório pgAdmin4: ```cd lib```
-    - Descoberta a versão mais recente do python, voltar para o diretório raiz (/pgAdmin4): ```cd ..```
-    - Criar o arquivo config_local.py usando nano: ```nano lib/<versao_mais_recente_python>/site-packages/pgadmin4/config_local.py```
-    - Colar o seguinte conteúdo no arquivo config_local.py:
-      ```
-      import os
-      DATA_DIR = os.path.realpath(os.path.expanduser(u'~/.pgadmin/'))
-      LOG_FILE = os.path.join(DATA_DIR, 'pgadmin4.log')
-      SQLITE_PATH = os.path.join(DATA_DIR, 'pgadmin4.db')
-      SESSION_DB_PATH = os.path.join(DATA_DIR, 'sessions')
-      STORAGE_DIR = os.path.join(DATA_DIR, 'storage')
-      SERVER_MODE = False
-      ```
-    - Executando o pgAdmin4: ```python lib/<versao_mais_recente_python>/site-packages/pgadmin4/pgAdmin4.py```
-    - Observação: se algum "module error" aparecer de flask-htmlmin, instalar o módulo e depois tentar executar novamente:
-      ```
-      pip install flask-htmlmin
-      python lib/<versao_mais_recente_python>/site-packages/pgadmin4/pgAdmin4.py
-      ```
+      - Checar a versão mais recente do python entrando na pasta lib do diretório pgAdmin4: ```cd lib```
+      - Descoberta a versão mais recente do python, voltar para o diretório raiz (/pgAdmin4): ```cd ..```
+      - Criar o arquivo config_local.py usando nano: ```nano lib/<versao_mais_recente_python>/site-packages/pgadmin4/config_local.py```
+      - Colar o seguinte conteúdo no arquivo config_local.py:
+        ```
+        import os
+        DATA_DIR = os.path.realpath(os.path.expanduser(u'~/.pgadmin/'))
+        LOG_FILE = os.path.join(DATA_DIR, 'pgadmin4.log')
+        SQLITE_PATH = os.path.join(DATA_DIR, 'pgadmin4.db')
+        SESSION_DB_PATH = os.path.join(DATA_DIR, 'sessions')
+        STORAGE_DIR = os.path.join(DATA_DIR, 'storage')
+        SERVER_MODE = False
+        ```
+      - Executando o pgAdmin4: ```python lib/<versao_mais_recente_python>/site-packages/pgadmin4/pgAdmin4.py```
+      - Observação: se algum "module error" aparecer de flask-htmlmin, instalar o módulo e depois tentar executar novamente:
+        ```
+        pip install flask-htmlmin
+        python lib/<versao_mais_recente_python>/site-packages/pgadmin4/pgAdmin4.py
+        ```
   8. Corrigindo fatal error password authentication failed for user "postgres" na hora de criar o servidor pelo pgAdmin4
-    - Localizar o arquivo ```pg_hba.conf```. Geralmente fica em ```/etc/postgresql/12/main```. Caso não ache, checar link: https://askubuntu.com/questions/256534/how-do-i-find-the-path-to-pg-hba-conf-from-the-shell
-    - Abrir ```pg_hba.conf``` com sudo: ```sudo nano pg_hba.conf```
-    - Na linha ```host all postgres 127.0.0.1/32```, trocar o METHOD de md5 para trust e salvar o arquivo.
-    - Reiniciar o serviço PostgreSQL: ```sudo service postgresql restart```
-    - Alterar a senha do usuário postgres para alguma desejada: ```sudo -u postgres psql -c "ALTER USER postgres PASSWORD '<new-password>';"```
-    - Abra o pg_hba.conf novamente e volte o METHOD para md5 (tirando o trust).
-    - Reiniciar o serviço PostgreSQL novamente.
-    - Pronto, agora o servidor pode ser criado sem problemas.
-
+      - Localizar o arquivo ```pg_hba.conf```. Geralmente fica em ```/etc/postgresql/12/main```. Caso não ache, checar link: https://askubuntu.com/questions/256534/how-do-i-find-the-path-to-pg-hba-conf-from-the-shell
+      - Abrir ```pg_hba.conf``` com sudo: ```sudo nano pg_hba.conf```
+      - Na linha ```host all postgres 127.0.0.1/32```, trocar o METHOD de md5 para trust e salvar o arquivo.
+      - Reiniciar o serviço PostgreSQL: ```sudo service postgresql restart```
+      - Alterar a senha do usuário postgres para alguma desejada: ```sudo -u postgres psql -c "ALTER USER postgres PASSWORD '<new-password>';"```
+      - Abra o pg_hba.conf novamente e volte o METHOD para md5 (tirando o trust).
+      - Reiniciar o serviço PostgreSQL novamente.
+      - Pronto, agora o servidor pode ser criado sem problemas.
+      
 ## Algumas Observações
   - Após clonar esse repositório, rode ```git remote set-url origin git@github.com:username/repositoryname.git``` no repositório do projeto ao invés do clássico ```remote add origin```.
   - Lembrar de apagar o ```.git``` da pasta frontend para não ter problema na hora de subir tudo pro github.
