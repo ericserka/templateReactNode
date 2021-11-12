@@ -18,11 +18,13 @@
   - O pgAdmin é um software gráfico para administração do SGBD PostgreSQL. SGBD é uma abreviação para Sistema de Gerenciamento de Banco de Dados, do inglês Data Base Management System - DBMS. A partir dele fica muito mais fácil criar servidores, banco de dados, tabelas, schemas, executar queries, etc.
   1. Atualizar o sistema
 
-    - ```sudo apt-get update```
+    sudo apt-get update
     
   2. Instalar pacotes necessários
-    - ```sudo apt-get install build-essential libssl-dev libffi-dev libgmp3-dev```
-    - ```sudo apt-get install python3-virtualenv libpq-dev python3-dev```
+
+    sudo apt-get install build-essential libssl-dev libffi-dev libgmp3-dev
+    sudo apt-get install python3-virtualenv libpq-dev python3-dev
+    
   3. Criar um virtual environment num diretório desejado
     - ```virtualenv pgAdmin4```
   4. Ativar o virtual environment
