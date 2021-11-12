@@ -1,5 +1,5 @@
 // Update with your config settings.
-const { DB_USER, DB_PASSWORD, DB_NAME } = require('../config')
+const { DB_USER, DB_PASSWORD, DB_NAME } = require('./src/config')
 
 module.exports = {
   development: {
@@ -15,7 +15,7 @@ module.exports = {
     },
     migrations: {
       tableName: 'knex_migrations',
-      directory: './migrations',
+      directory: './src/database/migrations',
     },
     useNullAsDefault: true,
   },
