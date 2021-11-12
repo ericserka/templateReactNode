@@ -26,21 +26,29 @@
     sudo apt-get install python3-virtualenv libpq-dev python3-dev
     
   3. Criar um virtual environment num diretório desejado
-    - ```virtualenv pgAdmin4```
+
+    virtualenv pgAdmin4
+    
   4. Ativar o virtual environment
-    - ```cd pgAdmin4```
-    - ```source bin/activate```
+
+    cd pgAdmin4
+    source bin/activate
+    
   5. Baixar o pgAdmin4
-    - Pesquisar a versão mais recente no link: https://ftp.postgresql.org/pub/pgadmin/pgadmin4/
-    - ```wget https://ftp.postgresql.org/pub/pgadmin/pgadmin4/<versao_mais_recente>/pip/<versao_mais_recente>.whl```
+
+    Pesquisar a versão mais recente no link: https://ftp.postgresql.org/pub/pgadmin/pgadmin4/
+    wget https://ftp.postgresql.org/pub/pgadmin/pgadmin4/<versao_mais_recente>/pip/<versao_mais_recente>.whl
+    
   6. Instalar o pgAdmin4
-    - ```pip install <versao_mais_recente>.whl```
+
+    pip install <versao_mais_recente>.whl
+    
   7. Configurar e executar o pgAdmin4
-    - Checar a versão mais recente do python entrando na pasta lib do diretório pgAdmin4: ```cd lib```
-    - Descoberta a versão mais recente do python, voltar para o diretório raiz (/pgAdmin4): ```cd ..```
-    - Criar o arquivo config_local.py usando nano: ```nano lib/<versao_mais_recente_python>/site-packages/pgadmin4/config_local.py```
-    - Colar o seguinte conteúdo no arquivo config_local.py:
-      ```
+
+    Checar a versão mais recente do python entrando na pasta lib do diretório pgAdmin4: cd lib
+    Descoberta a versão mais recente do python, voltar para o diretório raiz (/pgAdmin4): cd ..
+    Criar o arquivo config_local.py usando nano: nano lib/<versao_mais_recente_python>/site-packages/pgadmin4/config_local.py
+    Colar o seguinte conteúdo no arquivo config_local.py:
       import os
       DATA_DIR = os.path.realpath(os.path.expanduser(u'~/.pgadmin/'))
       LOG_FILE = os.path.join(DATA_DIR, 'pgadmin4.log')
@@ -48,13 +56,11 @@
       SESSION_DB_PATH = os.path.join(DATA_DIR, 'sessions')
       STORAGE_DIR = os.path.join(DATA_DIR, 'storage')
       SERVER_MODE = False
-      ```
-    - Executando o pgAdmin4: ```python lib/<versao_mais_recente_python>/site-packages/pgadmin4/pgAdmin4.py```
-    - Observação: se algum "module error" aparecer de flask-htmlmin, instalar o módulo e depois tentar executar novamente:
-      ```
+    Executando o pgAdmin4: python lib/<versao_mais_recente_python>/site-packages/pgadmin4/pgAdmin4.py
+    Observação: se algum "module error" aparecer de flask-htmlmin, instalar o módulo e depois tentar executar novamente:
       pip install flask-htmlmin
       python lib/<versao_mais_recente_python>/site-packages/pgadmin4/pgAdmin4.py
-      ```
+      
   8. Corrigindo fatal error password authentication failed for user "postgres" na hora de criar o servidor pelo pgAdmin4
     - Localizar o arquivo ```pg_hba.conf```. Geralmente fica em ```/etc/postgresql/12/main```. Caso não ache, checar link: https://askubuntu.com/questions/256534/how-do-i-find-the-path-to-pg-hba-conf-from-the-shell
     - Abrir ```pg_hba.conf``` com sudo: ```sudo nano pg_hba.conf```
