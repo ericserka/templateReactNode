@@ -1,15 +1,14 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Pagina from './pages/Pagina' //não precisa colocar o /index porque pelo nome do arquivo ser index, ele fica subtendido
 
-export default function Routes() {
+export default function Rotas() {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={Pagina} />{' '}
-        {/*o exact é necessário para q os outros paths funcionem normalmente*/}
-        <Route path="/pagina" component={Pagina} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Pagina/>} />
+        <Route path="/pagina" element={<Pagina/>} />
+      </Routes>
     </BrowserRouter>
   )
 }
